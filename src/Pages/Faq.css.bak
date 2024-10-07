@@ -84,7 +84,6 @@ summary::-webkit-details-marker {
 
 .control-icon-close {
     display: none;
-	color: black;
 }
 
 details[open] .control-icon-close {

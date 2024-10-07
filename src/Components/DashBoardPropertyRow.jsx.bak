@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function DashBoardPropertyRow({ search, property }) {
 
   const searchLowercase = search.toLowerCase();
-  if (property.title.toLowerCase().includes(searchLowercase)) {
+  if (property.title.toLowerCase().includes(searchLowercase)){
     return (
       <div className="md:flex w-full text-center py-9 md:justify-center content-center items-center border-b-2 border-black">
         <div className="basis-1/4 mb-3">

@@ -66,8 +66,8 @@ export default function Faq() {
                         <details open={openFaqIndex === item._id}>
                             <summary onClick={(e) => handleFaqClick(e, item._id)}>
                                 {item?.question}
-                                <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation"><use xlink="http://www.w3.org/1999/xlink" href="#expand-more" /></svg>
-                                <svg class="control-icon control-icon-close" width="24" height="24" role="presentation"><use xlink="http://www.w3.org/1999/xlink" href="#close" /></svg>
+                                <svg class="control-icon control-icon-expand" color='#F79489' width="24" height="24" role="presentation"><use xlink="http://www.w3.org/1999/xlink" href="#expand-more" /></svg>
+                                <svg class="control-icon control-icon-close" stroke='#F79489' width="24" height="24" role="presentation"><use xlink="http://www.w3.org/1999/xlink" href="#close" /></svg>
                             </summary>
                             <p>{item?.answer}</p>
                         </details>

@@ -214,7 +214,7 @@ export default function NavbarC() {
 
 
 
-  const [show, setShow] = useState(true);
+const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const scrollDownThreshold = 10; // Set the scroll threshold
   const scrollUpThreshold = 5;
