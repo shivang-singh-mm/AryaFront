@@ -6,10 +6,10 @@ function DashBoardFaqRow({ faq }) {
     return (
         <div className="md:flex w-full text-center py-9 md:justify-center content-center items-center border-b-2 border-black">
             <div className="basis-1/4 mb-3">
-                <h2 className="text-l">{faq?.question}</h2>
+                <h2 className="text-[20px]">{faq?.question}</h2>
             </div>
             <div className="basis-1/4 mb-3">
-                <h2 className="text-l">{faq?.answer}</h2>
+                <h2 className="text-[20px]">{faq?.answer}</h2>
             </div>
             {/* <div className="basis-1/6 mb-3">
           <h2 className="text-l">{formatDate(order.check_in)}</h2>

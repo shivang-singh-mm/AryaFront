@@ -8,6 +8,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { logout, login } from '../Store/userSlice';
 import api from "../api/api";
 import { authentication } from '../firebase/config';
+import DashBoardNavbar from "../Components/DashBoardNavbar";
 
 const DashBoardAddProperty = () => {
   const dispatch = useDispatch();
@@ -15,8 +16,8 @@ const DashBoardAddProperty = () => {
   const amenitiesList = useSelector(state => state.amenity);
   const cardsList = useSelector(state => state.card);
 
-  
-  const options = ['full-property','private-rooms','dorm-beds'];
+
+  const options = ['full-property', 'private-rooms', 'dorm-beds'];
   const [title, setTitle] = useState();
   const [location, setLocation] = useState();
   const [price, setPrice] = useState();
@@ -32,24 +33,24 @@ const DashBoardAddProperty = () => {
   const [id, setId] = useState();
   const [visible, setVisible] = useState(false);
 
-  useEffect(() =>{
+  useEffect(() => {
     const unlisten = onAuthStateChanged(authentication,
-       user => {
+      user => {
         if (user) {
           const userData = {
-            token:user.accessToken,
-            uid:user.uid,
-            provider:user.providerData[0].providerId
+            token: user.accessToken,
+            uid: user.uid,
+            provider: user.providerData[0].providerId
           }
-          
-          const fetchData = async()=>{
+
+          const fetchData = async () => {
             try {
               console.log(user.uid);
               const response = await api.get(`/api/v1/user/${user.uid}`);
               console.log(response.data.role);
               setVisible(true)
 
-              if(response.data.role != 'admin'){
+              if (response.data.role != 'admin') {
                 navigate('/')
               }
             } catch (error) {
@@ -67,11 +68,11 @@ const DashBoardAddProperty = () => {
           dispatch(logout());
           navigate('/')
         }
-       });
+      });
     return () => {
-        unlisten();
+      unlisten();
     }
- }, []);
+  }, []);
 
 
 
@@ -159,14 +160,14 @@ const DashBoardAddProperty = () => {
       room_description,
       surrounding_description,
       video,
-      currentLocation_images:[],
-      ats_image:[],
-      slides:[],
-      reviews:[],
+      currentLocation_images: [],
+      ats_image: [],
+      slides: [],
+      reviews: [],
       cards,
       amenities,
       roomType,
-      bhk:Number(bhk)
+      bhk: Number(bhk)
     };
     const payload = await dispatch(createProperty(newProperty)).unwrap();
     setPayload(payload);
@@ -185,20 +186,21 @@ const DashBoardAddProperty = () => {
   useEffect(() => {
     dispatch(getAllAmenity());
     dispatch(getAllCards());
-  },[])
+  }, [])
 
   useEffect(() => {
-    if(payload) {
+    if (payload) {
       navigate(`/dashboard/property/${payload._id}`)
     }
-  },[payload])
+  }, [payload])
 
 
-  if(!visible){
+  if (!visible) {
     return <div></div>
   }
   return (
     <div>
+      <DashBoardNavbar />
       <div className="bg-white px-8 py-5 rounded mx-auto box-border w-3/5">
         <h2 className="text-3xl mb-3 text-center font-poppins">Add Property</h2>
         <form action="" className="font-montserrat text-sm">
@@ -312,7 +314,7 @@ const DashBoardAddProperty = () => {
                   </div>
                 </div>
               </label>
-            </li>) }
+            </li>)}
           </ul>
           <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">
             Choose Amenities:
@@ -333,12 +335,12 @@ const DashBoardAddProperty = () => {
               >
                 <div class="flex w-full align-middle">
                   <div class="basis-1/4 text-sm">
-                    <img src={amenity.icon.url} alt="" className="w-5 self-center"/>
+                    <img src={amenity.icon.url} alt="" className="w-5 self-center" />
                   </div>
                   <div class="basis-3/4 text-lg font-semibold">{amenity.title}</div>
                 </div>
               </label>
-            </li>) }
+            </li>)}
           </ul>
 
           <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">
@@ -360,12 +362,12 @@ const DashBoardAddProperty = () => {
               >
                 <div class="flex w-full align-middle">
                   <div class="basis-1/4 text-sm">
-                    <img src={card.icon.url} alt="" className="w-5 self-center"/>
+                    <img src={card.icon.url} alt="" className="w-5 self-center" />
                   </div>
                   <div class="basis-3/4 text-lg font-semibold">{card.title}</div>
                 </div>
               </label>
-            </li>) }
+            </li>)}
           </ul>
 
           <button

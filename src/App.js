@@ -23,7 +23,7 @@ import DashBoardAddFaq from "./Pages/DashboardAddFaq";
 import DashBoardEditFaq from "./Pages/DashboardEditFaq";
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-[white]">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />

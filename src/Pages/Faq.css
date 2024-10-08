@@ -21,12 +21,12 @@ details {
     margin: 0 auto;
     position: relative;
     font-size: 22px;
-    border: 1px solid rgba(0, 0, 0, .1);
+    border: 2px solid #baf5ff;
     border-radius: 15px;
     box-sizing: border-box;
     transition: all .3s;
-    color: #6ACDE9;
-    background-color: #def1f8;
+    color: black;
+    /* background-color: #def1f8; */
 }
 
 details+details {
@@ -35,9 +35,9 @@ details+details {
 
 details[open] {
     min-height: 50px;
-    background-color: #f6f7f8;
     box-shadow: 2px 2px 20px rgba(0, 0, 0, .2);
-    background-color: #f3faf6;
+    background-color: #baf5ff;
+    color: black;
 }
 
 details p {
@@ -84,7 +84,7 @@ summary::-webkit-details-marker {
 
 .control-icon-close {
     display: none;
-	color: black;
+    color: black;
 }
 
 details[open] .control-icon-close {

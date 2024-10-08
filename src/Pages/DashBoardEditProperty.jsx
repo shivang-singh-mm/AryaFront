@@ -22,6 +22,7 @@ import { deleteReview } from "../Store/reviewSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { logout, login } from '../Store/userSlice';
 import { authentication } from '../firebase/config';
+import DashBoardNavbar from "../Components/DashBoardNavbar";
 
 const DashBoardEditProperty = () => {
   const { id } = useParams();
@@ -65,24 +66,24 @@ const DashBoardEditProperty = () => {
 
   const [visible, setVisible] = useState(false);
 
-  useEffect(() =>{
+  useEffect(() => {
     const unlisten = onAuthStateChanged(authentication,
-       user => {
+      user => {
         if (user) {
           const userData = {
-            token:user.accessToken,
-            uid:user.uid,
-            provider:user.providerData[0].providerId
+            token: user.accessToken,
+            uid: user.uid,
+            provider: user.providerData[0].providerId
           }
-          
-          const fetchData = async()=>{
+
+          const fetchData = async () => {
             try {
               console.log(user.uid);
               const response = await api.get(`/api/v1/user/${user.uid}`);
               console.log(response.data.role);
               setVisible(true)
 
-              if(response.data.role != 'admin'){
+              if (response.data.role != 'admin') {
                 navigate('/')
               }
             } catch (error) {
@@ -100,11 +101,11 @@ const DashBoardEditProperty = () => {
           dispatch(logout());
           navigate('/')
         }
-       });
+      });
     return () => {
-        unlisten();
+      unlisten();
     }
- }, []);
+  }, []);
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -376,7 +377,7 @@ const DashBoardEditProperty = () => {
     }
   }, [property]);
 
-  if(!visible){
+  if (!visible) {
     return <div></div>
   }
 
@@ -384,11 +385,12 @@ const DashBoardEditProperty = () => {
     return <></>;
   }
 
-  
+
 
   return (
     <>
       <div>
+        <DashBoardNavbar />
         <div className="bg-white px-8 py-5 rounded mx-auto box-border w-3/4">
           <div className="flex justify-between mb-10">
             <h2 className="text-3xl text-center font-poppins">Edit Property</h2>
@@ -406,11 +408,10 @@ const DashBoardEditProperty = () => {
               </button>
               <input
                 type="text"
-                className={`border-2 rounded-xl py-1 px-3  w-full ${
-                  disableTitle
-                    ? " text-gray-400 cursor-not-allowed"
-                    : "text-black"
-                }`}
+                className={`border-2 rounded-xl py-1 px-3  w-full ${disableTitle
+                  ? " text-gray-400 cursor-not-allowed"
+                  : "text-black"
+                  }`}
                 placeholder="Title"
                 value={title}
                 disabled={disableTitle}
@@ -426,11 +427,10 @@ const DashBoardEditProperty = () => {
               </button>
               <input
                 type="text"
-                className={`border-2 rounded-xl py-1 px-3  w-full ${
-                  disableLocation
-                    ? " text-gray-400 cursor-not-allowed"
-                    : "text-black"
-                }`}
+                className={`border-2 rounded-xl py-1 px-3  w-full ${disableLocation
+                  ? " text-gray-400 cursor-not-allowed"
+                  : "text-black"
+                  }`}
                 placeholder="Location"
                 value={location}
                 disabled={disableLocation}
@@ -448,11 +448,10 @@ const DashBoardEditProperty = () => {
                 type="number"
                 onChange={handlePrice}
                 value={price}
-                className={`border-2 rounded-xl py-1 px-3  w-full ${
-                  disablePrice
-                    ? " text-gray-400 cursor-not-allowed"
-                    : "text-black"
-                }`}
+                className={`border-2 rounded-xl py-1 px-3  w-full ${disablePrice
+                  ? " text-gray-400 cursor-not-allowed"
+                  : "text-black"
+                  }`}
                 disabled={disablePrice}
                 placeholder="Price"
               />
@@ -468,11 +467,10 @@ const DashBoardEditProperty = () => {
                 type="number"
                 onChange={handleBHK}
                 value={bhk}
-                className={`border-2 rounded-xl py-1 px-3  w-full ${
-                  disableBhK
-                    ? " text-gray-400 cursor-not-allowed"
-                    : "text-black"
-                }`}
+                className={`border-2 rounded-xl py-1 px-3  w-full ${disableBhK
+                  ? " text-gray-400 cursor-not-allowed"
+                  : "text-black"
+                  }`}
                 disabled={disableBhK}
                 placeholder="BHK"
               />
@@ -486,11 +484,10 @@ const DashBoardEditProperty = () => {
               </button>
               <input
                 type="text"
-                className={`border-2 rounded-xl py-1 px-3  w-full ${
-                  disableVideo
-                    ? " text-gray-400 cursor-not-allowed"
-                    : "text-black"
-                }`}
+                className={`border-2 rounded-xl py-1 px-3  w-full ${disableVideo
+                  ? " text-gray-400 cursor-not-allowed"
+                  : "text-black"
+                  }`}
                 placeholder="Video URL"
                 value={video}
                 disabled={disableVideo}
@@ -509,11 +506,10 @@ const DashBoardEditProperty = () => {
                 id=""
                 cols=""
                 rows="3"
-                className={`border-2 rounded-xl py-1 px-3  w-full ${
-                  disableLocation_description
-                    ? " text-gray-400 cursor-not-allowed"
-                    : "text-black"
-                }`}
+                className={`border-2 rounded-xl py-1 px-3  w-full ${disableLocation_description
+                  ? " text-gray-400 cursor-not-allowed"
+                  : "text-black"
+                  }`}
                 placeholder="Location Description"
                 onChange={handleLocationDescription}
                 disabled={disableLocation_description}
@@ -535,11 +531,10 @@ const DashBoardEditProperty = () => {
                 id=""
                 cols=""
                 rows="3"
-                className={`border-2 rounded-xl py-1 px-3  w-full ${
-                  disableRoom_description
-                    ? " text-gray-400 cursor-not-allowed"
-                    : "text-black"
-                }`}
+                className={`border-2 rounded-xl py-1 px-3  w-full ${disableRoom_description
+                  ? " text-gray-400 cursor-not-allowed"
+                  : "text-black"
+                  }`}
                 placeholder="Room Description"
                 onChange={handleRoomDescription}
                 value={room_description}
@@ -559,11 +554,10 @@ const DashBoardEditProperty = () => {
                 id=""
                 cols=""
                 rows="3"
-                className={`border-2 rounded-xl py-1 px-3  w-full ${
-                  disableSurrounding_description
-                    ? " text-gray-400 cursor-not-allowed"
-                    : "text-black"
-                }`}
+                className={`border-2 rounded-xl py-1 px-3  w-full ${disableSurrounding_description
+                  ? " text-gray-400 cursor-not-allowed"
+                  : "text-black"
+                  }`}
                 placeholder="Surrounding Description"
                 onChange={handleSurroundingDescription}
                 value={surrounding_description}
@@ -678,7 +672,7 @@ const DashBoardEditProperty = () => {
               Save
             </button>
           </form>
-<br />
+          <br />
           <br />
           <br />
           <hr height='2px' />
@@ -724,7 +718,7 @@ const DashBoardEditProperty = () => {
               </h2>
             )}
           </div>
-		  <br />
+          <br />
           <br />
           <br />
           <hr height='2px' />

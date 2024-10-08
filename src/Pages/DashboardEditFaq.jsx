@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { logout, login } from '../Store/userSlice';
 import { authentication } from '../firebase/config';
 import { deleteFaq, editFaq, getFaqById } from "../Store/faqSlice";
+import DashBoardNavbar from "../Components/DashBoardNavbar";
 
 const DashBoardEditFaq = () => {
     const { id } = useParams();
@@ -113,6 +114,7 @@ const DashBoardEditFaq = () => {
     return (
         <>
             <div>
+                <DashBoardNavbar />
                 <div className="bg-white px-8 py-5 rounded mx-auto box-border w-3/4">
                     <div className="flex justify-between mb-10">
                         <h2 className="text-3xl text-center font-poppins">Edit Property</h2>

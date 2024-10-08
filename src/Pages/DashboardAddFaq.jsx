@@ -6,6 +6,7 @@ import { logout, login } from '../Store/userSlice';
 import api from "../api/api";
 import { authentication } from '../firebase/config';
 import { createFaq } from "../Store/faqSlice";
+import DashBoardNavbar from "../Components/DashBoardNavbar";
 
 const DashBoardAddFaq = () => {
     const dispatch = useDispatch();
@@ -98,6 +99,7 @@ const DashBoardAddFaq = () => {
     }
     return (
         <div>
+            <DashBoardNavbar />
             <div className="bg-white px-8 py-5 rounded mx-auto box-border w-3/5">
                 <h2 className="text-3xl mb-3 text-center font-poppins">Add Faq</h2>
                 <form action="" className="font-montserrat text-sm">
