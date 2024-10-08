@@ -117,7 +117,7 @@ export default function SearchMobile({ dropdownArray }) {
                     <div className="w-3/5 dropdown flex items-center   py-2  px-4 ...">
                         <Dropdown
                             inline
-                            label={isChoose ? <div className='w-full text-sm text-start'><h1 className='font-medium'>{selectedTitle}</h1><p><i className='fa  fa-map-marker text-[#6ACDE9] mr-2'></i>{selectedLoc}</p></div> : <div className='py-2  text-[17px]   w-full font-medium'>Choose your stays</div>}
+                            label={isChoose ? <div className='w-full text-sm text-start'><h1 className='font-medium'>{selectedTitle}</h1><p><i className='fa  fa-map-marker text-[#6ACDE9] mr-2'></i>{selectedLoc}</p></div> : <div className='py-2  text-[17px]   w-full font-medium'><i class="fa fa-map-marker" aria-hidden="true"></i> Choose your stays</div>}
                         >
                             {dropdownArray.map(item => {
                                 return (<>
@@ -137,7 +137,7 @@ export default function SearchMobile({ dropdownArray }) {
                             dismissOnClick={false}
                             className='px-5 py-4'
                             inline
-                            label={<div className='text-start  w-full'><div className='text-[17px] font-medium'>Guests</div>
+                            label={<div className='text-start  w-full'><div className='text-[17px] font-medium'><i class="fa fa-users text-sm" aria-hidden="true"></i> Guests</div>
                                 <div className='text-[#F79489] text-[13px]'>{adultNumber} Adult, {childNumber} Child</div></div>}
 
                         >
