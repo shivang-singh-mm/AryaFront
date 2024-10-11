@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Datepicker } from 'flowbite-react';
 import { useState } from 'react';
@@ -7,16 +6,17 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateOrder } from '../Store/currentOrderSlice';
 import { useNavigate } from 'react-router-dom';
-export default function SearchMobile({ dropdownArray }) {
+
+export default function Search({ dropdownArray }) {
+
     const dispatch = useDispatch();
     const currOrder = useSelector(state => state.currentOrder.currentOrder)
-    let navigate = useNavigate()
+    let navigate = useNavigate();
 
     const [selectedTitle, setSelectedTitle] = useState('');
     const [selectedLoc, setSelectedLoc] = useState('');
     const [selectedId, setSelectedId] = useState('');
     const [isChoose, SetisChoose] = useState(false);
-
 
     const changeDropdown = (title, loc, id) => {
         setSelectedLoc(loc)
@@ -111,13 +111,15 @@ export default function SearchMobile({ dropdownArray }) {
     }
 
     return (
-        <div>
-            <div className='container md:hidden bg-[white] pt-10 mx-auto '>
-                <div className='flex flex-wrap border-2 mx-5  border-slate-300/50 custom-shadow-mobile content-center divide-x	  rounded-lg'>
-                    <div className="w-3/5 dropdown flex items-center   py-2  px-4 ...">
+
+        <div className='bg-[white]'>
+            <div className='container md:block hidden pt-16 mx-auto '>
+                <div className='flex flex-wrap border-2 mx-28  border-slate-300/50 custom-shadow content-center divide-x	  rounded-lg'>
+                    <div class="lg:w-2/6 flex items-center  dropdown  px-5  py-2 ...">
                         <Dropdown
                             inline
-                            label={isChoose ? <div className='w-full text-sm text-start'><h1 className='font-medium'>{selectedTitle}</h1><p><i className='fa  fa-map-marker text-[#6ACDE9] mr-2'></i>{selectedLoc}</p></div> : <div className='py-2  text-[16px]   w-full font-medium'><i class="fa fa-map-marker" aria-hidden="true" style={{ color: ' #6E6E6E' }}></i> Choose your stay</div>}
+                            className='mt-2'
+                            label={isChoose ? <div className='w-full text-start'><h1 className='font-medium text-lg'>{selectedTitle}</h1><p><i className='fa  fa-map-marker text-[#6ACDE9] mr-2'></i>{selectedLoc}</p></div> : <div className='py-2  text-lg   w-full'> <i class="fa fa-map-marker" aria-hidden="true" style={{ color: '#6E6E6E' }}></i> Choose your stay</div>}
                         >
                             {dropdownArray.map(item => {
                                 return (<>
@@ -129,46 +131,67 @@ export default function SearchMobile({ dropdownArray }) {
 
                                 </>)
                             })}
+
+
+                            {/* <Dropdown.Item onClick={change}><div className='text-start'>
+                <h1>Classy 1 BHK, near Viviana Mall</h1>
+                <p>Casa Ultima, Behind Jupiter Hospital, Thane (W)</p>
+            </div></Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item onClick={change}><div className='text-start'>
+                <h1>Classy 1 BHK, near Viviana Mall</h1>
+                <p>Casa Ultima, Behind Jupiter Hospital, Thane (W)</p>
+            </div></Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item onClick={change}><div className='text-start'>
+                <h1>Classy 1 BHK, near Viviana Mall</h1>
+                <p>Casa Ultima, Behind Jupiter Hospital, Thane (W)</p>
+            </div></Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item onClick={change}><div className='text-start'>
+                <h1>Classy 1 BHK, near Viviana Mall</h1>
+                <p>Casa Ultima, Behind Jupiter Hospital, Thane (W)</p>
+            </div></Dropdown.Item> */}
                         </Dropdown>
                     </div>
-                    <div className="w-2/5 dropdown pl-1  py-2 pr-1 ...">
+                    <div className="lg:w-1/6 h-full items-center text-lg py-2 ...">
+                        <h1 className='pl-3 z-10 font-medium'>Check In</h1>
+                        {/* new Date().getDate()+'/'+(new Date().getMonth()+1) +'/'+new Date().getFullYear() */}
+                        <Datepicker value={checkInDate} minDate={new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())} onSelectedDateChanged={handleCheckIn} className='p-0  custom-date' />
+                    </div>
+                    <div class="lg:w-1/6 text-lg py-2 ...">
+                        <h1 className='pl-3 z-10 font-medium'>Check Out</h1>
+                        <Datepicker value={checkOutDate} minDate={new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)} onSelectedDateChanged={handleCheckOut} className='p-0  custom-date z-20' />
+                    </div>
+                    <div class="lg:w-1/6 dropdown px-3 py-2 ...">
                         <Dropdown
                             arrowIcon={true}
                             dismissOnClick={false}
-                            className='px-5 py-4 items-center'
+                            className='px-5 py-4 mt-2'
                             inline
-                            label={<div className='text-center items-center  w-full'><div className='text-[17px] font-medium'><i class="fa fa-users text-sm" aria-hidden="true" style={{ color: ' #6E6E6E' }}></i> Guests</div>
-                                <div className='text-[#F79489] text-[13px]'>{adultNumber} Adult, {childNumber} Child</div></div>}
+                            label={<div className='text-start  w-full'><div className='text-xl font-medium'><i class="fa fa-users text-sm" aria-hidden="true"></i> Guests</div>
+                                <div className='text-[#F79489] '>{adultNumber} Adult, {childNumber} Child</div></div>}
 
                         >
-                            <div className='flex w-100 mb-2 justify-between items-center'>
+                            <div className='flex w-100 mb-2 justify-between'>
                                 <div><h1 className='font-bold text-base w-3/5'>Adults</h1><p className='text-gray-400'>Age 8+</p></div>
-                                <div className='w-2/5 justify-between  flex '><button className='border mr-2 rounded-full border-2' onClick={decrAdult}>-</button> {adultNumber}<button className='ml-2 border rounded-full' onClick={incrAdult}>+</button></div>
+                                <div className='w-2/5 justify-between  flex items-center'><button className='border mr-2 rounded-full border-2' onClick={decrAdult}>-</button> {adultNumber}<button className='ml-2 border rounded-full border-2' onClick={incrAdult}>+</button></div>
                             </div>
                             <Dropdown.Divider />
-                            <div className='flex w-100 my-2 justify-between  items-center'>
+                            <div className='flex w-100 my-2 justify-between'>
                                 <div><h1 className='font-bold text-base w-3/5'>Child</h1><p className='text-gray-400'>Age 0 - 8</p></div>
-                                <div className='w-2/5 justify-between  flex'><button onClick={decrChild} className='border mr-2 rounded-full'>-</button> {childNumber}<button onClick={incrChild} className='ml-2 border rounded-full'>+</button></div>
+                                <div className='w-2/5 justify-between  flex items-center'><button onClick={decrChild} className='border mr-2 rounded-full border-2'>-</button> {childNumber}<button onClick={incrChild} className='ml-2 border rounded-full border-2'>+</button></div>
                             </div>
                             <Dropdown.Divider />
                             <div><h1 className='text-green-500 font-bold w-64'>Charges are not applicable for children below 8</h1></div>
 
                         </Dropdown>
                     </div>
-                </div>
-                <div className='flex flex-wrap border-2 mx-5 mt-2 border-slate-300/50 custom-shadow-mobile content-center divide-x	  rounded-lg'>
-                    <div className="w-2/5 dropdown    py-2 ...">
-                        <h1 className='pl-3  z-10 font-medium'>Check In</h1>
-                        <Datepicker value={checkInDate} minDate={new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())} onSelectedDateChanged={handleCheckIn} className='p-0  custom-date' />
-                    </div>
-                    <div className="w-2/5 dropdown pl-0  py-2 ...">
-                        <h1 className='pl-3 z-10 font-medium'>Check Out</h1>
-                        <Datepicker value={checkOutDate} minDate={new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)} onSelectedDateChanged={handleCheckOut} className='p-0  custom-date mobile-date' />
-                    </div>
-                    <div className="w-1/5 dropdown    ...">
+                    <div class="lg:w-1/6 ...">
                         {/* <Link to={`/property/${selectedId}`}> */}
-                        <button onClick={() => { redirectToIndividualPage() }} className='w-full align-center bg-[#F79489] h-full text-xl font-bold rounded-lg text-white '><i class="fa fa-search" /></button>
+                        <button onClick={() => { redirectToIndividualPage() }} className='w-full align-center bg-[#F79489] h-full text-xl font-bold rounded-lg text-white py-2 px-3'>Search</button>
                         {/* </Link> */}
+
                     </div>
                 </div>
             </div>

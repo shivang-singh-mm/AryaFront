@@ -119,7 +119,7 @@ export default function Search({ dropdownArray }) {
                         <Dropdown
                             inline
                             className='mt-2'
-                            label={isChoose ? <div className='w-full text-start'><h1 className='font-medium text-lg'>{selectedTitle}</h1><p><i className='fa  fa-map-marker text-[#6ACDE9] mr-2'></i>{selectedLoc}</p></div> : <div className='py-2  text-lg   w-full'><i class="fa fa-map-marker" aria-hidden="true"></i> Choose your stays</div>}
+                            label={isChoose ? <div className='w-full text-start'><h1 className='font-medium text-lg'>{selectedTitle}</h1><p><i className='fa  fa-map-marker text-[#6ACDE9] mr-2'></i>{selectedLoc}</p></div> : <div className='py-2  text-lg   w-full'> <i class="fa fa-map-marker" aria-hidden="true" style={{ color: '#6E6E6E' }}></i> Choose your stay</div>}
                         >
                             {dropdownArray.map(item => {
                                 return (<>
@@ -169,7 +169,7 @@ export default function Search({ dropdownArray }) {
                             dismissOnClick={false}
                             className='px-5 py-4 mt-2'
                             inline
-                            label={<div className='text-start  w-full'><div className='text-xl font-medium'><i class="fa fa-users text-sm" aria-hidden="true"></i> Guests</div>
+                            label={<div className='text-start w-full'><div className='text-xl font-medium'><i class="fa fa-users text-sm" aria-hidden="true" style={{ color: ' #6E6E6E' }}></i> Guests</div>
                                 <div className='text-[#F79489] '>{adultNumber} Adult, {childNumber} Child</div></div>}
 
                         >

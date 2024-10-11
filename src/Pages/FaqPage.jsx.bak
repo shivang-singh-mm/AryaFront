@@ -45,7 +45,7 @@ export default function Faq() {
     }, []);
 
     return (
-        <div className='bg-[white] min-h-screen h-auto'>
+        <div className='bg-[white] h-screen'>
             <NavbarC />
             <Social />
             <h2>Frequently Asked Questions</h2>

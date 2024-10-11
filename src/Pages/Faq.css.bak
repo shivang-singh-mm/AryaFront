@@ -4,13 +4,13 @@ body {
 }
 
 h2 {
-    margin: 20px auto 40px;
+    margin: 20px auto 80px;
     font-size: 38px;
     font-weight: 300;
     text-align: center;
     letter-spacing: 2px;
     line-height: 1.5;
-    color: black;
+    color: #F79489;
 }
 
 details {
