@@ -9,8 +9,8 @@ const DashBoardSlide = ({ id, propertyId, type }) => {
   const dispatch = useDispatch();
   const [slide, setSlide] = useState();
   const [image, setImage] = useState();
-  const [disableSlide_description, setDisableSlide_description] = useState(true);
-  const [slide_description, setSlide_description] = useState();
+  const [disableSlide_description,setDisableSlide_description] = useState(true);
+  const [slide_description,setSlide_description] = useState();
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -43,8 +43,8 @@ const DashBoardSlide = ({ id, propertyId, type }) => {
 
   const handleEditSlide = (e) => {
     e.preventDefault();
-    const newSlide = { description: slide_description };
-    const updatedSlide = { id, newSlide }
+    const newSlide = {description:slide_description};
+    const updatedSlide = {id, newSlide}
     dispatch(editSlide(updatedSlide));
     setDisableSlide_description(true);
   }
@@ -54,28 +54,28 @@ const DashBoardSlide = ({ id, propertyId, type }) => {
     setSlide(response.data[0]);
   };
 
-  const handleImageEdit = (e, public_id) => {
+  const handleImageEdit = (e,public_id) => {
     e.preventDefault();
-    const newSlide = { image, public_id };
-    const updatedSlide = { id, newSlide }
+    const newSlide = {image,public_id};
+    const updatedSlide = {id, newSlide}
     dispatch(editSlide(updatedSlide));
   }
 
   // const handleImageDelete = (e) => {
   //   e.preventDefault();
-
-
+    
+    
   // }
 
   const handleSlideDelete = (e) => {
     e.preventDefault();
-    const propertyDetails = { propertyId, type }
-    const data = { id, propertyDetails };
+    const propertyDetails = { propertyId, type}
+    const data = {id, propertyDetails};
     dispatch(deleteSlide(data));
   }
 
   useEffect(() => {
-    if (slide) {
+    if(slide) {
       setSlide_description(slide.description);
     }
   }, [slide]);
@@ -94,15 +94,15 @@ const DashBoardSlide = ({ id, propertyId, type }) => {
           placeholder="Add"
           onChange={handleImage}
         />
-        <button onClick={handleSlideDelete}>
-          <BiTrash className="block mx-auto bg-red-500 text-white p-3 text-5xl rounded-xl hover:bg-red-600 hover:cursor-pointer" />
-        </button>
+         <button onClick={handleSlideDelete}>
+                    <BiTrash className="block mx-auto bg-red-500 text-white p-3 text-5xl rounded-xl hover:bg-red-600 hover:cursor-pointer" />
+                  </button>
       </div>
       <div class="grid grid-cols-3 gap-4">
         {(slide && slide.images.length) &&
           slide.images.map((image) => (
             <div class="w-full bg-white p-3 drop-shadow-2xl">
-              <img class="h-52 w-full object-cover" src={image?.url} />
+              <img class="h-52 w-full object-cover" src={image.url} />
               <ul class="mt-3 flex flex-wrap justify-around">
                 <li class="">
                   <button onClick={(e) => handleImageEdit(e, image.public_id)}>
@@ -120,23 +120,23 @@ const DashBoardSlide = ({ id, propertyId, type }) => {
       </div>
       <div className="my-3">
 
-        <textarea
-          name=""
-          id=""
-          cols=""
-          rows="3"
-          className={`border-2 rounded-xl py-1 px-3 mt-5 w-full text-black`}
-          placeholder="Surrounding Description"
-          onChange={handleSlideDescription}
-          value={slide_description}
-        ></textarea>
-        <button
-          className="block w-full bg-[#F79489] text-white py-1 px-5 rounded-full hover:bg-white hover:text-[#F79489] border-2 border-[#F79489] transition duration-200 box-border text-l my-3 font-poppins"
-          onClick={handleEditSlide}
-        >
-          Save
-        </button>
-      </div>
+            <textarea
+              name=""
+              id=""
+              cols=""
+              rows="3"
+              className={`border-2 rounded-xl py-1 px-3 mt-5 w-full text-black`}
+              placeholder="Surrounding Description"
+              onChange={handleSlideDescription}
+              value={slide_description}
+            ></textarea>
+            <button
+            className="block w-full bg-[#F79489] text-white py-1 px-5 rounded-full hover:bg-white hover:text-[#F79489] border-2 border-[#F79489] transition duration-200 box-border text-l my-3 font-poppins"
+            onClick={handleEditSlide}
+          >
+            Save
+          </button>
+          </div>
     </div>
   );
 };

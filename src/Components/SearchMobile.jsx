@@ -131,7 +131,7 @@ export default function SearchMobile({ dropdownArray }) {
                             })}
                         </Dropdown>
                     </div>
-                    <div className="w-2/5 dropdown pl-1  py-2 pr-1 ...">
+                    <div className="w-2/5 dropdown pl-0  py-2 pr-3 ...">
                         <Dropdown
                             arrowIcon={true}
                             dismissOnClick={false}

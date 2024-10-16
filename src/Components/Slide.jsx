@@ -15,14 +15,14 @@ export default function Slide2({ slides }) {
         return result.data[0];
       }));
       setSlideDetails(slideDetails)
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   }
 
   useEffect(() => {
     getSlideDetails();
-  },[slides]);
+  }, [slides]);
 
 
 
@@ -35,15 +35,15 @@ export default function Slide2({ slides }) {
           <div className="flex justify-between md:mb-10 mb-3 h-1/2">
             {slide.images.map((img, index) => {
               if (index == 0) {
-                return <img src={img.url} className="h-full md:mr-14 md:w-1/3 w-full" />;
+                return <img src={img?.url} className="h-full md:mr-14 md:w-1/3 w-full" />;
               }
               if (index === length - 1) {
                 return (
-                  <img src={img.url} className="h-full w-1/3 hidden md:block" />
+                  <img src={img?.url} className="h-full w-1/3 hidden md:block" />
                 );
               }
 
-              return <img src={img.url} className="h-full w-1/3 md:mr-14 hidden md:block" />;
+              return <img src={img?.url} className="h-full w-1/3 md:mr-14 hidden md:block" />;
 
 
             })}

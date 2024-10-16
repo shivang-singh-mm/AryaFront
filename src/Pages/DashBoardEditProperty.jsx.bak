@@ -681,7 +681,6 @@ const DashBoardEditProperty = () => {
           <hr height='2px' />
           <br />
           <br />
-
           <div className="flex mt-14 mb-8">
             <h2 className="basis-3/4 text-[30px] font-semibold">
               Current Location Image :

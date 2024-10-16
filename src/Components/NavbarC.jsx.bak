@@ -217,7 +217,7 @@ export default function NavbarC() {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const scrollDownThreshold = 10; // Set the scroll threshold
-  const scrollUpThreshold = 3;
+  const scrollUpThreshold = 5;
 
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
@@ -245,10 +245,8 @@ export default function NavbarC() {
 
 
   return (
-    <div className={`md:sticky md:top-0 md:z-50 w-full bg-white 
-      transition-transform duration-300
-       lg:${show ? 'translate-y-0' : '-translate-y-full'}
-      `}>
+    <div className={`md:sticky md:top-0 md:z-50 w-full bg-white transition-transform duration-300 ${show ? 'translate-y-0' : '-translate-y-full'
+      }`}>
       <Navbar fluid rounded className='md:mx-20 mx-4 '>
         <Navbar.Brand href="/">
           <img src={logo} className="mr-3 h-9 sm:h-9" alt="Aarya Stays Logo" />
@@ -276,7 +274,6 @@ export default function NavbarC() {
               color={'white'}
               style={{ borderColor: 'white' }}
               dismissOnClick={true}
-              className='z-20'
               label={
                 <Avatar alt="User settings" className='usericon ' img={user1} rounded />
               }

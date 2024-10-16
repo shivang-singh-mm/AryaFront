@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateOrder } from '../Store/currentOrderSlice';
 import { useNavigate } from 'react-router-dom';
+import './Calender.css'
 
 export default function Search({ dropdownArray }) {
 
@@ -169,7 +170,7 @@ export default function Search({ dropdownArray }) {
                             dismissOnClick={false}
                             className='px-5 py-4 mt-2'
                             inline
-                            label={<div className='text-start  w-full'><div className='text-xl font-medium'><i class="fa fa-users text-sm" aria-hidden="true"></i> Guests</div>
+                            label={<div className='text-start w-full'><div className='text-xl font-medium'><i class="fa fa-users text-sm" aria-hidden="true" style={{ color: ' #6E6E6E' }}></i> Guests</div>
                                 <div className='text-[#F79489] '>{adultNumber} Adult, {childNumber} Child</div></div>}
 
                         >
