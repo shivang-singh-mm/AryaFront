@@ -1,0 +1,8 @@
+.my-datepicker .pop-up {
+    right: 0 !important;
+    /* Adjust this value as needed */
+    transform: translateX(-50%);
+    background-color: black;
+    color: yellow;
+    /* Center the dropdown */
+}
