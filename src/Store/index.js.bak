@@ -10,7 +10,6 @@ import currentOrderReducer from "./currentOrderSlice.js";
 import eventReducer from "./eventSlice.js";
 import reviewReducer from "./reviewSlice.js";
 import faqReducer from "./faqSlice.js"
-import adminReducer from "./adminSlice.js"
 
 export const store = configureStore({
   reducer: {
@@ -24,7 +23,6 @@ export const store = configureStore({
     currentOrder: currentOrderReducer,
     event: eventReducer,
     review: reviewReducer,
-    faq: faqReducer,
-    admin: adminReducer
+    faq: faqReducer
   },
 });

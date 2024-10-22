@@ -30,10 +30,10 @@ export default function Slide2({ slides }) {
   return (
     <Carousel className="h-[500px]" slide={false} indicators={false}>
       {slideDetails.map(slide => {
-        const length = slide.images.length;
+        const length = slide.images?.length;
         return (<div className="dark:text-white h-full">
           <div className="flex justify-between md:mb-10 mb-3 h-1/2">
-            {slide.images.map((img, index) => {
+            {slide.images?.map((img, index) => {
               if (index == 0) {
                 return <img src={img?.url} className="h-full md:mr-14 md:w-1/3 w-full" />;
               }

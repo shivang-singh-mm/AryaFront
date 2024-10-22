@@ -21,8 +21,6 @@ import Faq from "./Pages/FaqPage";
 import DashboardFaq from "./Pages/DashboardFaq";
 import DashBoardAddFaq from "./Pages/DashboardAddFaq";
 import DashBoardEditFaq from "./Pages/DashboardEditFaq";
-import DashboardAdmin from "./Pages/DashboardAdmin";
-import DashBoardAddAdmin from "./Pages/DashboardAddAdmin";
 function App() {
   return (
     <div className="App bg-[white]">
@@ -46,16 +44,6 @@ function App() {
         <Route
           path="/dashboard/faq/:id"
           element={<DashBoardEditFaq />}
-        />
-
-        <Route
-          path="/dashboard/admin"
-          element={<DashboardAdmin />}
-        />
-
-        <Route
-          path="/dashboard/admin/add"
-          element={<DashBoardAddAdmin />}
         />
 
         {/* Amenities */}

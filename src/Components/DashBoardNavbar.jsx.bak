@@ -27,9 +27,6 @@ const DashBoardNavbar = () => {
           <Navbar.Link href="/dashboard/faq" className="text-lg">
             Faq
           </Navbar.Link>
-          <Navbar.Link href="/dashboard/admin" className="text-lg">
-            Admin
-          </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </div>

@@ -116,7 +116,7 @@ export default function Search({ dropdownArray }) {
         <div className='bg-[white]'>
             <div className='container md:block hidden pt-16 mx-auto '>
                 <div className='flex flex-wrap border-2 mx-28  border-slate-300/50 custom-shadow content-center divide-x	  rounded-lg'>
-                    <div class="lg:w-2/6 flex items-center  dropdown  px-5  py-2 ...">
+                    <div class="lg:w-2/6 flex items-center  dropdown  px-10  py-2 ...">
                         <Dropdown
                             inline
                             className='mt-2'
@@ -158,11 +158,13 @@ export default function Search({ dropdownArray }) {
                     <div className="lg:w-1/6 h-full items-center text-lg py-2 ...">
                         <h1 className='pl-3 z-10 font-medium'>Check In</h1>
                         {/* new Date().getDate()+'/'+(new Date().getMonth()+1) +'/'+new Date().getFullYear() */}
-                        <Datepicker value={checkInDate} minDate={new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())} onSelectedDateChanged={handleCheckIn} className='p-0  custom-date' />
+                        <Datepicker value={checkInDate} minDate={new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())} onSelectedDateChanged={handleCheckIn} className='p-0  custom-date mr-4' />
                     </div>
                     <div class="lg:w-1/6 text-lg py-2 ...">
                         <h1 className='pl-3 z-10 font-medium'>Check Out</h1>
-                        <Datepicker value={checkOutDate} minDate={new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)} onSelectedDateChanged={handleCheckOut} className='p-0  custom-date z-20' />
+                        <Datepicker value={checkOutDate} options={{
+                            position: 'bottom-start', // or 'bottom-end' based on your requirement
+                        }} minDate={new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)} onSelectedDateChanged={handleCheckOut} className='p-0  custom-date z-20 my-datepicker' />
                     </div>
                     <div class="lg:w-1/6 dropdown px-3 py-2 ...">
                         <Dropdown

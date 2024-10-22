@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Datepicker } from 'flowbite-react';
 import { useState } from 'react';
-import { Dropdown } from 'flowbite-react';
+import { Dropdown, CustomFlowbiteTheme } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateOrder } from '../Store/currentOrderSlice';
@@ -29,6 +29,18 @@ export default function Search({ dropdownArray }) {
         SetisChoose(true);
 
     }
+
+    const customTheme = {
+        datepicker:
+        {
+            popup: {
+                header: {
+                    title: "px-10 text-black",
+                },
+            }
+        },
+    };
+
     //set date using useeffect
     const [checkInDate, setCheckInDate] = useState();
     const [checkOutDate, setCheckOutDate] = useState();
@@ -162,9 +174,9 @@ export default function Search({ dropdownArray }) {
                     </div>
                     <div class="lg:w-1/6 text-lg py-2 ...">
                         <h1 className='pl-3 z-10 font-medium'>Check Out</h1>
-                        <Datepicker value={checkOutDate} options={{
-                            position: 'bottom-start', // or 'bottom-end' based on your requirement
-                        }} minDate={new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)} onSelectedDateChanged={handleCheckOut} className='p-0  custom-date z-20 my-datepicker' />
+                        <Datepicker value={checkOutDate} theme={{ theme: customTheme }} options={{
+                            position: 'bottom-end', // or 'bottom-end' based on your requirement
+                        }} minDate={new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)} onSelectedDateChanged={handleCheckOut} className='p-0  custom-date z-20 mr-10 my-datepicker' />
                     </div>
                     <div class="lg:w-1/6 dropdown px-3 py-2 ...">
                         <Dropdown
